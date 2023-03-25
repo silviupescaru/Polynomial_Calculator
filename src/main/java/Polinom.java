@@ -73,6 +73,25 @@ public class Polinom {
         }
     }
 
+    public void multiplyPolinoms() {
+        result.clear();
+        for (int degree1 : pol1.keySet()) {
+            for (int degree2 : pol2.keySet()) {
+                int coefficient1 = pol1.get(degree1);
+                int coefficient2 = pol2.get(degree2);
+                int degreeResult = degree1 + degree2;
+                int coefficientResult = coefficient1 * coefficient2;
+                if (result.containsKey(degreeResult)) {
+                    int currentCoefficient = result.get(degreeResult);
+                    result.put(degreeResult, currentCoefficient + coefficientResult);
+                } else {
+                    result.put(degreeResult, coefficientResult);
+                }
+            }
+        }
+    }
+
+
     public void setPol1(TreeMap<Integer, Integer> pol1) {
         this.pol1 = pol1;
     }
@@ -122,6 +141,4 @@ public class Polinom {
         }
         return sb.toString();
     }
-
-
 }

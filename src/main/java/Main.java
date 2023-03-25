@@ -2,7 +2,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        new GUI();
+        //new GUI();
         // Create a new instance of the Polinom class
         Polinom pol = new Polinom();
 
@@ -25,5 +25,7 @@ public class Main {
         System.out.println("Pol1 + Pol2: " + pol.toString(pol.getResult()));
         pol.subtractPolinoms();
         System.out.println("Pol1 - Pol2: " + pol.toString(pol.getResult()));
+        pol.multiplyPolinoms();
+        System.out.println("Pol1 * Pol2: " + pol.toString(pol.getResult()));
     }
 }
