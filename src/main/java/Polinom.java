@@ -23,7 +23,7 @@ public class Polinom {
             double coeff = 0;
             int degree = 0;
             if (!coeffString.isEmpty()) {
-                coeff = Integer.parseInt(coeffString);
+                coeff = Double.parseDouble(coeffString);
             }
             if (degreeString != null) {
                 degree = Integer.parseInt(degreeString);

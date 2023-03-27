@@ -17,9 +17,11 @@ public class GUI extends JFrame {
     private JButton inmultireButton;
     private JButton derivareButton;
     private JButton scadereButton;
-    private JButton incarcaPolinoameleButton;
+    private JButton loadButton;
     private JButton integrareButton;
+
     Polinom polinom = new Polinom();
+    Polinom polinomInitial = new Polinom();
 
     public GUI() {
         super("Calculator Polinoame");
@@ -88,10 +90,10 @@ public class GUI extends JFrame {
         inmultireButton.setBackground(new Color(-2712213));
         buttonPanel.add(inmultireButton);
 
-        JButton incarcaPolinoameleButton = new JButton("Incarca polinoamele");
-        incarcaPolinoameleButton.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
-        incarcaPolinoameleButton.setBackground(new Color(-2712213));
-        buttonPanel.add(incarcaPolinoameleButton);
+        JButton loadButton = new JButton("Load");
+        loadButton.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        loadButton.setBackground(new Color(-2712213));
+        buttonPanel.add(loadButton);
 
         JButton derivareButton = new JButton("Derivare");
         derivareButton.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
@@ -104,20 +106,15 @@ public class GUI extends JFrame {
         buttonPanel.add(integrareButton);
 
 
-        incarcaPolinoameleButton.addActionListener(e -> {
-            String polynomial1 = textField1.getText();
-            polinom.addPolynomial(polynomial1, polinom.pol1);
-            String polynomial2 = textField1.getText();
-            polinom.addPolynomial(polynomial2, polinom.pol1);
-            System.out.println(polinom.pol1.toString());
-            System.out.println(polinom.pol2.toString());
-        });
-
-        adunareButton.addActionListener(e -> {
+        loadButton.addActionListener(e -> {
             String polynomial1 = textField1.getText();
             polinom.addPolynomial(polynomial1, polinom.pol1);
             String polynomial2 = textField2.getText();
             polinom.addPolynomial(polynomial2, polinom.pol2);
+            textField3.setText("");
+        });
+
+        adunareButton.addActionListener(e -> {
             polinom.addPolinoms();
             String resultP = polinom.toString(polinom.getResult());
             textField3.setText(resultP);
@@ -125,6 +122,42 @@ public class GUI extends JFrame {
             System.out.println(polinom.toString(polinom.pol2));
             System.out.println("Pol1 + Pol2: " + polinom.toString(polinom.getResult()));
         });
+
+        scadereButton.addActionListener(e -> {
+            polinom.subtractPolinoms();
+            String resultP = polinom.toString(polinom.getResult());
+            textField3.setText(resultP);
+            System.out.println(polinom.toString(polinom.pol1));
+            System.out.println(polinom.toString(polinom.pol2));
+            System.out.println("Pol1 - Pol2: " + polinom.toString(polinom.getResult()));
+        });
+
+        inmultireButton.addActionListener(e -> {
+            polinom.multiplyPolinoms();
+            String resultP = polinom.toString(polinom.getResult());
+            textField3.setText(resultP);
+            System.out.println(polinom.toString(polinom.pol1));
+            System.out.println(polinom.toString(polinom.pol2));
+            System.out.println("Pol1 * Pol2: " + polinom.toString(polinom.getResult()));
+        });
+
+        derivareButton.addActionListener(e -> {
+            polinom.derivePolinom(polinom.pol1);
+            String resultP = polinom.toString(polinom.getResult());
+            textField3.setText(resultP);
+            System.out.println(polinom.toString(polinom.pol1));
+            System.out.println("Pol1 derivat: " + polinom.toString(polinom.getResult()));
+        });
+
+        integrareButton.addActionListener(e -> {
+            polinom.integratePolinom(polinom.pol1);
+            String resultP = polinom.toString(polinom.getResult());
+            textField3.setText(resultP);
+            System.out.println(polinom.toString(polinom.pol1));
+            System.out.println("Pol1 derivat: " + polinom.toString(polinom.getResult()));
+        });
+
+
 
         this.setContentPane(mainPanel);
        // this.add(mainPanel);
