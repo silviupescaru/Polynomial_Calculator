@@ -1,47 +1,133 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GUI extends JFrame {
+    private JPanel mainPanel;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JPanel polinomPanel;
+    private JPanel buttonPanel;
+    private JLabel pol1Label;
+    private JLabel pol2Label;
+    private JTextField textField3;
+    private JLabel rezultatLabel;
+    private JButton adunareButton;
+    private JButton inmultireButton;
+    private JButton derivareButton;
+    private JButton scadereButton;
+    private JButton incarcaPolinoameleButton;
+    private JButton integrareButton;
+    Polinom polinom = new Polinom();
 
     public GUI() {
-        setTitle("Polynomial Calculator");
-        setSize(500, 250);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        super("Calculator Polinoame");
+        setSize(800, 370);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new GridLayout(2, 1, 10, 10));
+        mainPanel.setBackground(new Color(-16370603));
 
-        JPanel inputOutputPanel = new JPanel(new GridLayout(3, 2));
-        JLabel inputLabel1 = new JLabel("Polynomial 1:");
-        inputLabel1.setFont(new Font("Arial", Font.BOLD, 16));
-        inputOutputPanel.add(inputLabel1);
+        JPanel polinomPanel = new JPanel();
+        polinomPanel.setLayout(new GridLayout(3, 2, 10, 10));
+        polinomPanel.setBackground(new Color(-16370603));
+        mainPanel.add(polinomPanel);
 
-        JTextField inputField1 = new JTextField();
-        inputField1.setPreferredSize(inputLabel1.getPreferredSize());
-        inputOutputPanel.add(inputField1);
-        JLabel inputLabel2 = new JLabel("Polynomial 2:");
-        inputLabel2.setFont(new Font("Arial", Font.BOLD, 16));
-        inputOutputPanel.add(inputLabel2);
+        JLabel pol1Label = new JLabel();
+        pol1Label.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        pol1Label.setForeground(new Color(-3));
+        pol1Label.setText("Polinom 1:");
+        polinomPanel.add(pol1Label);
 
-        JTextField inputField2 = new JTextField();
-        inputField2.setPreferredSize(inputLabel2.getPreferredSize());
-        inputOutputPanel.add(inputField2);
-        JLabel outputLabel = new JLabel("Result:");
-        outputLabel.setFont(new Font("Arial", Font.BOLD, 16));
-        inputOutputPanel.add(outputLabel);
+        JTextField textField1 = new JTextField();
+        textField1.setBackground(new Color(-9532));
+        textField1.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        polinomPanel.add(textField1);
 
-        JTextField outputField = new JTextField();
-        outputField.setEditable(false);
-        inputOutputPanel.add(outputField);
-        add(inputOutputPanel, BorderLayout.NORTH);
+        JLabel pol2Label = new JLabel();
+        pol2Label.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        pol2Label.setForeground(new Color(-3));
+        pol2Label.setText("Polinom 2:");
+        polinomPanel.add(pol2Label);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(4, 5));
-        String[] buttonLabels = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "x", "^", "+", "-", "*", "/", "d", "i", "=", "D"};
-        JButton[] buttons = new JButton[buttonLabels.length];
-        for (int i = 0; i < buttonLabels.length; i++) {
-            buttons[i] = new JButton(buttonLabels[i]);
-            buttonPanel.add(buttons[i]);
-        }
-        add(buttonPanel, BorderLayout.CENTER);
+        JTextField textField2 = new JTextField();
+        textField2.setBackground(new Color(-9532));
+        textField2.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        polinomPanel.add(textField2);
 
-        setVisible(true);
+        JLabel rezultatLabel = new JLabel();
+        rezultatLabel.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        rezultatLabel.setForeground(new Color(-3));
+        rezultatLabel.setText("Rezultat:");
+        polinomPanel.add(rezultatLabel);
+
+        JTextField textField3 = new JTextField();
+        textField3.setBackground(new Color(-9532));
+        textField3.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        polinomPanel.add(textField3);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(3, 2, 10, 10));
+        buttonPanel.setBackground(new Color(-16370603));
+        mainPanel.add(buttonPanel);
+
+
+        JButton adunareButton = new JButton("Adunare");
+        adunareButton.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        adunareButton.setBackground(new Color(-12017220));
+        buttonPanel.add(adunareButton);
+
+        JButton scadereButton = new JButton("Scadere");
+        scadereButton.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        scadereButton.setBackground(new Color(-12017220));
+        buttonPanel.add(scadereButton);
+
+        JButton inmultireButton = new JButton("Inmultire");
+        inmultireButton.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        inmultireButton.setBackground(new Color(-2712213));
+        buttonPanel.add(inmultireButton);
+
+        JButton incarcaPolinoameleButton = new JButton("Incarca polinoamele");
+        incarcaPolinoameleButton.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        incarcaPolinoameleButton.setBackground(new Color(-2712213));
+        buttonPanel.add(incarcaPolinoameleButton);
+
+        JButton derivareButton = new JButton("Derivare");
+        derivareButton.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        derivareButton.setBackground(new Color(-4434599));
+        buttonPanel.add(derivareButton);
+
+        JButton integrareButton = new JButton("Integrare");
+        integrareButton.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        integrareButton.setBackground(new Color(-4434599));
+        buttonPanel.add(integrareButton);
+
+
+        incarcaPolinoameleButton.addActionListener(e -> {
+            String polynomial1 = textField1.getText();
+            polinom.addPolynomial(polynomial1, polinom.pol1);
+            String polynomial2 = textField1.getText();
+            polinom.addPolynomial(polynomial2, polinom.pol1);
+            System.out.println(polinom.pol1.toString());
+            System.out.println(polinom.pol2.toString());
+        });
+
+        adunareButton.addActionListener(e -> {
+            String polynomial1 = textField1.getText();
+            polinom.addPolynomial(polynomial1, polinom.pol1);
+            String polynomial2 = textField2.getText();
+            polinom.addPolynomial(polynomial2, polinom.pol2);
+            polinom.addPolinoms();
+            String resultP = polinom.toString(polinom.getResult());
+            textField3.setText(resultP);
+            System.out.println(polinom.toString(polinom.pol1));
+            System.out.println(polinom.toString(polinom.pol2));
+            System.out.println("Pol1 + Pol2: " + polinom.toString(polinom.getResult()));
+        });
+
+        this.setContentPane(mainPanel);
+       // this.add(mainPanel);
     }
+
 }

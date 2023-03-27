@@ -1,8 +1,12 @@
+import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        //new GUI();
+        SwingUtilities.invokeLater(() -> {
+            GUI gui = new GUI();
+            gui.setVisible(true);
+        });
         Polinom pol = new Polinom();
 
         pol.addPolynomial("+2x^2+1x^1-1123", pol.pol1);
