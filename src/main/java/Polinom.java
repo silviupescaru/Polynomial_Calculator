@@ -15,7 +15,7 @@ public class Polinom {
     }
 
     public void addPolynomial(String polynomial, TreeMap<Integer, Double> pol) {
-        Pattern pattern = Pattern.compile("([+\\-]?\\d*)(x(?:\\^(\\d+))?)?"); // matches a term of the form ax^b or ax or b
+        Pattern pattern = Pattern.compile("([+\\-]?\\d*\\.?\\d+)(x(?:\\^(\\d+))?)?");
         Matcher matcher = pattern.matcher(polynomial);
         while (matcher.find()) {
             String coeffString = matcher.group(1);
@@ -107,11 +107,11 @@ public class Polinom {
     }
 
 
-    public void setPol1(TreeMap<Integer, Double> pol1) {
+    public void setPol1(java.util.TreeMap<Integer, Double> pol1) {
         this.pol1 = pol1;
     }
 
-    public void setPol2(TreeMap<Integer, Double> pol2) {
+    public void setPol2(java.util.TreeMap<Integer, Double> pol2) {
         this.pol2 = pol2;
     }
 

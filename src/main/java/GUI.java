@@ -25,7 +25,7 @@ public class GUI extends JFrame {
 
     public GUI() {
         super("Calculator Polinoame");
-        setSize(800, 370);
+        setSize(850, 420);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(2, 1, 10, 10));
@@ -44,7 +44,7 @@ public class GUI extends JFrame {
 
         JTextField textField1 = new JTextField();
         textField1.setBackground(new Color(-9532));
-        textField1.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        textField1.setFont(new Font("Ubuntu Mono", Font.BOLD, 16));
         polinomPanel.add(textField1);
 
         JLabel pol2Label = new JLabel();
@@ -55,7 +55,7 @@ public class GUI extends JFrame {
 
         JTextField textField2 = new JTextField();
         textField2.setBackground(new Color(-9532));
-        textField2.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        textField2.setFont(new Font("Ubuntu Mono", Font.BOLD, 16));
         polinomPanel.add(textField2);
 
         JLabel rezultatLabel = new JLabel();
@@ -66,7 +66,7 @@ public class GUI extends JFrame {
 
         JTextField textField3 = new JTextField();
         textField3.setBackground(new Color(-9532));
-        textField3.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
+        textField3.setFont(new Font("Ubuntu Mono", Font.BOLD, 16));
         polinomPanel.add(textField3);
 
         JPanel buttonPanel = new JPanel();
@@ -156,8 +156,6 @@ public class GUI extends JFrame {
             System.out.println(polinom.toString(polinom.pol1));
             System.out.println("Pol1 derivat: " + polinom.toString(polinom.getResult()));
         });
-
-
 
         this.setContentPane(mainPanel);
        // this.add(mainPanel);
