@@ -4,15 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GUI extends JFrame {
+
     private JPanel mainPanel;
-    private JTextField textField1;
-    private JTextField textField2;
+
     private JPanel polinomPanel;
-    private JPanel buttonPanel;
     private JLabel pol1Label;
+    private JTextField textField1;
     private JLabel pol2Label;
-    private JTextField textField3;
+    private JTextField textField2;
     private JLabel rezultatLabel;
+    private JTextField textField3;
+
+    private JPanel buttonPanel;
     private JButton adunareButton;
     private JButton inmultireButton;
     private JButton derivareButton;
@@ -158,7 +161,5 @@ public class GUI extends JFrame {
         });
 
         this.setContentPane(mainPanel);
-       // this.add(mainPanel);
     }
-
 }

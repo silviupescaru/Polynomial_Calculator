@@ -106,6 +106,34 @@ public class Polinom {
         result.put(0, 0.0);
     }
 
+    public String toString(TreeMap<Integer, Double> pol) {
+        StringBuilder sb = new StringBuilder();
+        DecimalFormat df = new DecimalFormat("#.##");
+        for (int degree : pol.descendingKeySet()) {
+            double coefficient = pol.get(degree);
+            if (coefficient == 0) {
+                continue;
+            }
+            if (coefficient > 0 && sb.length() > 0) {
+                sb.append(" + ");
+            }
+            if (coefficient < 0) {
+                sb.append(" - ");
+                coefficient = -coefficient;
+            }
+            sb.append(df.format(coefficient));
+            if (degree > 0) {
+                sb.append("x");
+                if (degree > 1) {
+                    sb.append("^").append(degree);
+                }
+            }
+        }
+        if (sb.length() == 0) {
+            sb.append("0");
+        }
+        return sb.toString();
+    }
 
     public void setPol1(java.util.TreeMap<Integer, Double> pol1) {
         this.pol1 = pol1;
@@ -125,34 +153,5 @@ public class Polinom {
 
     public TreeMap<Integer, Double> getResult() {
         return result;
-    }
-
-    public String toString(TreeMap<Integer, Double> pol) {
-        StringBuilder sb = new StringBuilder();
-        DecimalFormat df = new DecimalFormat("#.##");
-        for (int degree : pol.descendingKeySet()) {
-            double coefficient = pol.get(degree);
-            if (coefficient == 0) {
-                continue; // skip terms with zero coefficient
-            }
-            if (coefficient > 0 && sb.length() > 0) {
-                sb.append(" + "); // add plus sign for positive coefficients after the first term
-            }
-            if (coefficient < 0) {
-                sb.append(" - "); // add minus sign for negative coefficients
-                coefficient = -coefficient;
-            }
-            sb.append(df.format(coefficient));
-            if (degree > 0) {
-                sb.append("x");
-                if (degree > 1) {
-                    sb.append("^").append(degree);
-                }
-            }
-        }
-        if (sb.length() == 0) {
-            sb.append("0"); // polynomial is zero
-        }
-        return sb.toString();
     }
 }
