@@ -1,7 +1,7 @@
+package polinomPackage;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import java.util.TreeMap;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class PolinomTest {
 

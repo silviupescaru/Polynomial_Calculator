@@ -1,7 +1,7 @@
+package polinomPackage;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GUI extends JFrame {
 
@@ -42,7 +42,7 @@ public class GUI extends JFrame {
         JLabel pol1Label = new JLabel();
         pol1Label.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
         pol1Label.setForeground(new Color(-3));
-        pol1Label.setText("Polinom 1:");
+        pol1Label.setText("polinomPackage.Polinom 1:");
         polinomPanel.add(pol1Label);
 
         JTextField textField1 = new JTextField();
@@ -53,7 +53,7 @@ public class GUI extends JFrame {
         JLabel pol2Label = new JLabel();
         pol2Label.setFont(new Font("Ubuntu Mono", Font.BOLD, 18));
         pol2Label.setForeground(new Color(-3));
-        pol2Label.setText("Polinom 2:");
+        pol2Label.setText("polinomPackage.Polinom 2:");
         polinomPanel.add(pol2Label);
 
         JTextField textField2 = new JTextField();

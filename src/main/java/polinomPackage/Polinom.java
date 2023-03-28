@@ -1,3 +1,5 @@
+package polinomPackage;
+
 import java.text.DecimalFormat;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
